@@ -64,7 +64,10 @@ jobs:
       # see https://github.com/MOcov/MOcov/issues/28
       uses: codecov/codecov-action@v3
       with:
-        file: coverage.xml   # optional
+        token: ${{ secrets.CODECOV_TOKEN }}
+        # file: coverage.xml   # optional
+        files: ./coverage1.xml,./coverage2.xml,!./cache
         flags: ${{ matrix.os }}_matlab-${{ matrix.version }}
         name: codecov-umbrella   # optional
         fail_ci_if_error: true   # optional (default = false)
+        verbose: true
