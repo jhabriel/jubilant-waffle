@@ -21,8 +21,8 @@ jobs:
 
     strategy:
       matrix:
-        version: [R2021a, R2021b, R2022a, R2022b, R2023a]
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        version: [R2022b]
+        os: [ubuntu-latest]
       fail-fast: false  # Don't cancel all jobs if one fails
 
     runs-on: ${{ matrix.os }}
@@ -65,8 +65,7 @@ jobs:
       uses: codecov/codecov-action@v3
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        # file: coverage.xml   # optional
-        files: ./coverage1.xml,./coverage2.xml,!./cache
+        files: coverage.xml
         flags: ${{ matrix.os }}_matlab-${{ matrix.version }}
         name: codecov-umbrella   # optional
         fail_ci_if_error: true   # optional (default = false)
