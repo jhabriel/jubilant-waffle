@@ -11,6 +11,8 @@ name: 'MATLAB: test and coverage'
 # If tests pass, uploads coverage to codecov
 
 on:
+  workflow_dispatch:
+    # run jobs manually
   push:
     branches: [master, main, dev]
   pull_request:
@@ -59,7 +61,8 @@ jobs:
         }
 
     - name: Code coverage
-      if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
+      if: matrix.os == 'ubuntu-latest'
+      # if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
       # no coverage on windows as long as MOcov does not support it
       # see https://github.com/MOcov/MOcov/issues/28
       uses: codecov/codecov-action@v3
